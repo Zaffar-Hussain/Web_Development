@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>display Profile</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 2px solid white ;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>	
+	<style>
+#example1 {                     /* header*/
+ 
+  padding: 45px;
+  background-color: #00264d;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+</head>
+<body >
+	<div id="example1">
+</div>
+	<div style = "width:100%; "> 
+		<div style = "width:100%;  position:absolute; top:40px; right:-800px">
+			<style>
+a:link, a:visited {
+  background-color: #00264d;
+  color: white;
+  padding: 14px 23px;
+  text-align: center;     /*profile*/
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #336699;
+}
+</style>
+<tr>
+			 <td><a href="disp_prof.php" >Display profile</a></td>
+             <td><a href="edit_prof.php" style="margin-left: : 100px;">Edit Profile</a></td>
+             <td><a href="applhistory.php">Application history</a></td>
+             <td><a href="logout.php" >Logout</a></td>
+
+	<style>
+	.btn {
+  color: white;          /*all job*/
+  color: white;
+  background:#00264d;
+  font-weight: bold;
+  
+}
+
+.btn:hover {
+  color: #FFF;
+  background: #336699;
+}
+.button {               /*clickhere for aplied job*/
+  color: white;
+  background:#00264d;
+  font-weight: bold;
+  
+}
+
+.button:hover {  /*clickhere for aplied job*/
+  color: #FFF;
+  background:#ff9900;
+}
+</style>
+</head>

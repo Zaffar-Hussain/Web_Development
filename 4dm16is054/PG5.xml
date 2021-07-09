@@ -1,0 +1,33 @@
+<?xml-stylesheet type="text/css" href="5.css"?>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <h1>STUDENT DESCRIPTION</h1>
+    </head>
+    <students>
+        <student>
+            <usn>USN:4DM16IS018</usn>
+            <name>NAME:MURIEL</name>
+            <college>COLLEGE:YIT</college>
+            <branch>BRANCH:ISE</branch>
+            <year>YEAR:2016</year>
+            <e-mail>E-MAIL:muriel@gmail.com</e-mail>
+        </student>
+        <student>
+            <usn>USN:4DM16IS049</usn>
+            <name>NAME:TEJAS</name>
+            <college>COLLEGE:YIT</college>
+            <branch>BRANCH:ISE</branch>
+            <year>YEAR:2016</year>
+            <e-mail>E-MAIL:tejas@gmail.com</e-mail>
+        </student>
+        <student>
+            <usn>USN:4DM16IS054</usn>
+            <name>NAME:ZAFAR</name>
+            <college>COLLEGE:YIT</college>
+            <branch>BRANCH:ISE</branch>
+            <year>YEAR:2016</year>
+            <e-mail>E-MAIL:zafar@gmail.com</e-mail>
+        </student>
+        </students>
+</html>

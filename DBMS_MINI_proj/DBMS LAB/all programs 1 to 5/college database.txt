@@ -1,0 +1,240 @@
+drop table student cascade constraints;
+drop table semsec  cascade constraints;
+drop table class cascade constraints;
+drop table subject cascade constraints;
+drop table iamarks cascade constraints;
+
+drop view test1;
+drop view highestvalue;
+
+create table student(
+usn varchar(10) primary key,
+sname varchar(25),
+address varchar(25),
+phone number(10),
+gender char(1));
+
+desc student;
+
+create table semsec(
+ssid varchar(5) primary key,
+sem number(2),
+sec char(1));
+
+desc semsec;
+
+create table class(
+usn varchar(10),
+ssid varchar(5),
+primary key(usn,ssid),
+foreign key(usn) references student(usn),
+foreign key(ssid) references semsec(ssid));
+
+desc class;
+
+create table subject(
+subcode varchar(8),
+title varchar(20),
+sem number(2),
+credita number(2),
+primary key(subcode));
+
+desc subject;
+
+create table iamarks(
+usn varchar(10),
+ssid varchar(5),
+subcode varchar(8),
+test1 number(2),
+test2 number(2),
+test3 number(2),
+finalia number(2),
+primary key(usn,subcode,ssid),
+foreign key(usn) references student(usn),
+foreign key(subcode) references subject(subcode),
+foreign key(ssid) references semsec(ssid));
+
+desc iamarks;
+
+insert into student values('4dm13cs020','akshay','belagavi',8877881122,'M');
+insert into student values('4dm13cs062','sandhya','bangalore',7722829912,'F');
+insert into student values('4dm13cs091','teesha','bangalore',7712312312,'F');
+insert into student values('4dm13cs066','supriya','mangalore',9900248613,'F');
+insert into student values('4dm14cs032','bhaskar','bangalore',9923211099,'M');
+insert into student values('4dm14cs010','abhay','bangalore',9900211201,'M');
+insert into student values('4dm14cs025','asmi','bangalore',7894737377,'F');
+insert into student values('4dm15cs011','ajay','tumkur',9845091341,'M');
+insert into student values('4dm15cs029','chitra','davangere',7696772121,'F');
+insert into student values('4dm15cs045','jeeva','ballary',9944850121,'M');
+insert into student values('4dm15cs091','santhosh','mangalore',8812332201,'M');
+insert into student values('4dm16cs045','ismail','kalburgi',9900232201,'M');
+insert into student values('4dm16cs088','sameera','shivmoga',9905542212,'F');
+insert into student values('4dm16cs122','vinayaka','chikkamagalure',8800880011,'M');
+
+select * from student
+
+
+
+insert into semsec values('CSE8A',8,'A');
+insert into semsec values('CSE8B',8,'B');
+insert into semsec values('CSE8C',8,'C');
+insert into semsec values('CSE7A',7,'A');
+insert into semsec values('CSE7B',7,'B');
+insert into semsec values('CSE7C',7,'C');
+insert into semsec values('CSE6A',6,'A');
+insert into semsec values('CSE6B',6,'B');
+insert into semsec values('CSE6C',6,'C');
+insert into semsec values('CSE5A',5,'A');
+insert into semsec values('CSE5B',5,'B');
+insert into semsec values('CSE5C',5,'C');
+insert into semsec values('CSE4A',4,'A');
+insert into semsec values('CSE4B',4,'B');
+insert into semsec values('CSE4C',4,'C');
+insert into semsec values('CSE3A',3,'A');
+insert into semsec values('CSE3B',3,'B');
+insert into semsec values('CSE3C',3,'C');
+insert into semsec values('CSE2A',2,'A');
+insert into semsec values('CSE2B',2,'B');
+insert into semsec values('CSE2C',2,'C');
+insert into semsec values('CSE1A',1,'A');
+insert into semsec values('CSE1B',1,'B');
+insert into semsec values('CSE1C',1,'C');
+
+select * from semsec;
+
+insert into class values('4dm13cs020','CSE8A');
+insert into class values('4dm13cs062','CSE8A');
+insert into class values('4dm13cs066','CSE8B');
+insert into class values('4dm13cs091','CSE8C');
+insert into class values('4dm14cs010','CSE7A');
+insert into class values('4dm14cs025','CSE7A');
+insert into class values('4dm14cs032','CSE7A');
+insert into class values('4dm15cs011','CSE4A');
+insert into class values('4dm15cs029','CSE4A');
+insert into class values('4dm15cs045','CSE4B');
+insert into class values('4dm15cs091','CSE4C');
+insert into class values('4dm16cs045','CSE3A');
+insert into class values('4dm16cs088','CSE3B');
+insert into class values('4dm13cs020','CSE3C');
+
+select * from class;
+
+insert into subject values('10CS81','ACA',8,4);
+insert into subject values('10CS82','SSM',8,4);
+insert into subject values('10CS83','NM',8,4);
+insert into subject values('10CS84','CC',8,4);
+insert into subject values('10CS85','PW',8,4);
+insert into subject values('10CS71','OOAD',7,4);
+insert into subject values('10CS72','ECS',7,4);
+insert into subject values('10CS73','PTW',7,4);
+insert into subject values('10CS74','DWPM',7,4);
+insert into subject values('10CS75','JAVA',7,4);
+insert into subject values('10CS76','SAN',7,4);
+insert into subject values('15CS51','ME',5,4);
+insert into subject values('15CS52','CN',5,4);
+insert into subject values('15CS53','DBMS',5,4);
+insert into subject values('15CS54','ATC',5,4);
+insert into subject values('15CS55','JAVA',5,3);
+insert into subject values('15CS56','AI',5,3);
+insert into subject values('15CS41','M4',4,4);
+insert into subject values('15CS42','SE',4,4);
+insert into subject values('15CS43','DAA',4,4);
+insert into subject values('15CS44','MPMC',4,4);
+insert into subject values('15CS45','OOC',4,3);
+insert into subject values('15CS46','DC',4,3);
+insert into subject values('15CS31','M3',3,4);
+insert into subject values('15CS32','ADE',3,4);
+insert into subject values('15CS33','DSA',3,4);
+insert into subject values('15CS34','CO',3,4);
+insert into subject values('15CS35','USP',3,4);
+insert into subject values('15CS36','DMS',3,4);
+
+select * from subject;
+
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs091','10CS81','CSE8C',09,16,09);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs091','10CS82','CSE8C',10,10,10);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs091','10CS83','CSE8C',20,06,07);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs091','10CS84','CSE8C',20,13,19);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs091','10CS85','CSE8C',13,14,15);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs020','10CS81','CSE8A',15,15,12);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs020','10CS82','CSE8A',20,20,20);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs020','10CS83','CSE8A',12,15,12);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs020','10CS84','CSE8A',01,01,01);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs020','10CS85','CSE8A',05,06,07);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs066','10CS81','CSE8B',11,20,08);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs066','10CS82','CSE8B',14,15,10);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs066','10CS83','CSE8B',08,15,11);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs066','10CS84','CSE8B',05,15,12);
+insert into iamarks(usn,subcode,ssid,test1,test2,test3)
+        values('4dm13cs066','10CS85','CSE8B',19,13,01);
+
+select * from iamarks;
+
+select * from student st
+inner join class c on st.usn=c.usn
+inner join semsec ss on c.ssid=ss.ssid
+where ss.sem=4 and ss.sec='C';
+
+
+select ss.sem,ss.sec,st.gender,count(st.gender)
+as count from student st
+inner join class c on st.usn=c.usn
+inner join semsec ss on c.ssid=ss.ssid
+group by(ss.sem,ss.sec,st.gender) order by ss.sem;
+
+
+create view test1 as
+select im.* from student st
+inner join iamarks im on im.usn=st.usn
+where st.usn='4dm13cs091';
+
+select * from test1;
+
+
+create view highestvalue as
+select usn,subcode,oldmark,row_number() over(partition by subcode,usn order by oldmark) as dencevalue from(select usn,subcode,test1 as oldmark from iamarks
+union all
+select usn,subcode,test2 as oldmark from iamarks
+union all
+select usn,subcode,test3 as oldmark from iamarks);
+
+select * from highestvalue;
+
+update iamarks
+set iamarks.finalia=(
+select sum(oldmark)/count(oldmark) 
+from highestvalue hv
+where dencevalue !=1 and hv.subcode=iamarks.subcode and hv.usn=iamarks.usn
+group by hv.subcode,hv.usn);
+
+select * from iamarks;
+
+
+select s.usn,sub.subcode,s.sname,s.address,s.phone,s.gender,
+(case
+when ia.finalia between 17 and 20 then
+'OUTSTANDING'
+when ia.finalia between 12 and 16 then 'AVERAGE'
+else 'WEAK'
+end) as cat
+from student s
+inner join iamarks ia on s.usn=ia.usn
+inner join semsec ss on ss.ssid=ia.ssid
+inner join subject sub on sub.subcode=ia.subcode
+where sub.sem=8;
+
+

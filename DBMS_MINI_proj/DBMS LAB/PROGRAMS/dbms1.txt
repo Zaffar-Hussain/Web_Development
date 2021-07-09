@@ -1,0 +1,57 @@
+drop table book cascade constraints;
+drop table library_branch cascade constraints;
+drop table publisher cascade constraints;
+drop table book_authors cascade constraints;
+drop table book_copies cascade constraints;
+drop table book_lending cascade constraints;
+
+drop view v_books;
+
+--range partition
+
+
+create table book(Book_id char(15) primary key,Title char(15), Publisher_Name char(20),Pub_Year int)
+ partition by range(pub_year)
+(partition p1 values less than (2014) tablespace users,
+ partition p2 values less than (2016) tablespace system,
+  partition p3 values less than (maxvalue) tablespace system);
+
+desc dba_tab_partitions;
+
+   col table_name format a10
+   column table_owener format a15
+   column partition_name format a20
+    set lin 100
+      set pagesize 100
+    select table_owner,table_name,partition_name from dba_tab_partitions
+where table_name='BOOK';
+
+
+	
+
+create table library_branch(Branch_id  integer primary key, Branch_Name char(25),Address char(25));
+create table publisher(Name char(20) primary key,Address char(30),Phone integer);
+
+create table book_authors(Author_name char(15),Book_id char(10) primary key,foreign key(Book_id) references book(Book_id) on delete cascade);
+
+create table book_copies(No_of_Copies integer,Book_id char(15),Branch_id integer, foreign key 
+(Book_id) references book(Book_id) on delete cascade,
+foreign key(Branch_id) references library_branch(Branch_id)
+on delete cascade,primary key(book_id,branch_id));
+
+
+create table book_lending(Card_No integer,Date_Out date,Due_Date date,
+Book_id char(15),Branch_id integer,
+foreign key(Book_id)
+references book(Book_id) on delete cascade,
+foreign key(Branch_id) references library_branch(Branch_id) on delete cascade,primary key(book_id,ranch_id,card_no));
+
+
+
+
+insert book values('DBMS-1','DBMS','PEARSON',2017);
+insert book values('ORACLE-1','ORACLE','WILSON',2015);
+insert book values('OOPS-1','OOPS','HP PUBLISHER',2014);
+insert book values('DBMS-1','DBMS','PEARSON',2017);
+insert book values('DBMS-1','DBMS','PEARSON',2017);
+insert book values('DBMS-1','DBMS','PEARSON',2017);

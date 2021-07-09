@@ -1,0 +1,273 @@
+<html>
+<head>
+<style>
+	div.possition{
+		border: 3px solid #73AD21;
+	}
+	div.marq{
+		
+	}
+	div.heading{
+		font-size: 30px;
+		text-align: center;
+		height: 50px;
+	}
+	.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+form.button.reset {background-color: red;}
+</style>
+
+<script type="text/javascript">
+
+//function to change charater to proper case and restrict to only letters for firstname
+function properCaseF(){
+	var x;
+	var regex = /^[a-zA-Z]*$/;
+ 	if (regex.test(document.reg.first.value))
+ 	{
+		x=document.getElementById("first").value;
+		document.getElementById("first").value=x.charAt(0).toUpperCase()+x.substr(1).toLowerCase();
+		return true;
+	}
+	else
+	{
+		alert("firstname should contain only letters");
+		return false;
+	}
+
+	}
+
+//function to change charater to proper case and restrict to only letters for lastname
+function properCaseL(){
+	var x;
+	var regex = /^[a-zA-Z]*$/;
+ 	if (regex.test(document.reg.last.value))
+ 	{
+		x=document.getElementById("last").value;
+		document.getElementById("last").value=x.charAt(0).toUpperCase()+x.substr(1).toLowerCase();
+		return true;
+	}
+	else
+	{
+		alert("lastname should contain only letters");
+		return false;
+	}
+}
+
+//function to change charater to proper case and restrict to only letters for username
+function properCaseU(){
+	var x;
+	x=document.getElementById("user").value;
+	document.getElementById("user").value=x.charAt(0).toUpperCase()+x.substr(1).toLowerCase();
+	if(x==' ')
+	{
+		document.getElementById("user").value=x.charAt(0).toUpperCase()+x.substr(1).toLowerCase();
+	}
+}
+
+//function to show the strength of password
+var message="Error";
+function checkdata(val)
+{
+	var len=val.length;
+	
+	if(len>=0 && len<=4)
+		message="<font color=red size=4>weak</font>";
+	else if(len>4 && len<=8)
+		message="<font color=blue size=4>medium</font>";
+	else
+		message="<font color=green size=4>strong</font>";
+	document.getElementById("span1").innerHTML=message;
+}
+
+//function for password confirmation
+function confirmpwd(val)
+{
+	var pwd=document.getElementById("pass").value;
+	//alert(";"+pwd+":"+val+":");
+	if(pwd==val)
+		document.getElementById("span11").innerHTML="<font color=red size=4>Password Matched</font>";
+	else
+		document.getElementById("span11").innerHTML="<font color=red size=4>Password Missmatched</font>";
+
+
+}
+
+/*function me()
+{
+	document.getElementById("span111").innerHTML="<input type="text" id="me"> ";
+}*/
+
+//function for other option in checkbox
+function other()
+{
+	 var element;
+	 element=document.getElementById('nationality').value;
+	 if(element=='other')
+	 {
+	 	document.getElementById("span111").innerHTML="<i>Enter your Nationality</i><br><input ></input> ";
+	 }
+}
+
+//function to restrict date
+function minDate()
+{
+	var x;
+	var r=15;
+	var now = new Date();
+	x=document.getElementById('bday').value;
+	y=x.charAt(0)+x.charAt(1)+x.charAt(2)+x.charAt(3);
+	z=now.getFullYear()-y;
+	if(z<=r)
+	{
+		document.getElementById("span222").innerHTML="<font color=red size=4>Age should be more than 15</font>";
+	}
+}
+
+function clear()
+{
+	var fields = document.getElementsByTagName('input');
+    length = fields.length;
+	while (length--) 
+	{
+    	if (fields[length].type === 'text') 
+    	{ 
+    		fields[length].value = ''; 
+    	}
+	}
+}
+
+/*$(document).ready( function() {
+    let now = new Date();
+ 
+    let day = ("0" + now.getDate()).slice(-2);
+    let month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    let today = (day)+"-"+(month)+"-"+ now.getFullYear();
+
+
+   $('#datePicker').val(today);
+    
+    $('#datebtn').click(function(){
+        
+        testClicked();
+        
+    });
+      });
+function testClicked()
+{
+  $('.getDate').html($('#datePicker').val());
+}*/
+</script>
+
+
+
+</head>
+
+	<body>
+		
+		<div style="background-color: #00ffff; " align="left" class="possition" >
+			<div class="heading" style="background-color: lightgreen "><b>REGISTRATION FORM</b></div>
+			
+			<form name="reg" method="get" action="" class="form">
+				<center>
+			<table style="width:50%">
+			<tr>
+				<td><h2 >First Name: </td>
+				<td><h2><input type="text" id="first" name="first"  placeholder="enter the first name" onchange="properCaseF();" required=""></h2></td>
+			</tr>
+			
+			<tr>
+				<td><h2 >Last Name:</td> 
+				<td><input type="text" id="last" name="last" placeholder="enter the last name" onchange="properCaseL();" required=""></h2></td>
+			</tr>
+		
+			<tr>
+				<td><h2 >User Name: </td>
+				<td><input type="text" id="user" name="user" placeholder="enter the user name" onchange="properCaseU();" required=""></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Password:</td>
+				<td><input type="password" id="pass" name="pass" placeholder="enter the password" required="" onkeyup="checkdata(this.value)"><br><span id="span1"></span><br></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Confirm Password:</td>
+				<td><input type="password" id="cpass" name="cpass" onchange="confirmpwd(this.value)" placeholder="confirm the password" required=""><br> <span id="span11"></span><br></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Email: </td>
+				<td><input type="text" id="Email" name="Email" placeholder="enter the last name" required=""></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Mobile: </td>
+				<td><input type="text" id="mobile" name="mobile" placeholder="enter the last name" required=""></h2></td>
+			</tr>
+
+			<tr>
+				<td><br><h2 >Choose your gender:</td>
+				<td><br><input type="radio" id="gender1" name="gender" value="male">Male<br>
+				<input type="radio" id="gender2" name="gender" value="female">Female<br>
+				<input type="radio" id="gender3" name="gender" value="other">Other<br></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Date Of Birth:</td>
+				<td><input type="date" id="bday" onchange="minDate();" name="bday" ><br><span id="span222"></span></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Course:</td>
+				<td><select id="select">
+			 	<option value="Computer Science and Engineering">Computer Science and Engineering</option>
+ 				<option value="Information Science and Engineering">Information Science and Engineering</option>
+				<option value="Mechanical Engineering">Mechanical Engineering</option>
+  				<option value="Electrical and Electronic Engineering">Electrical and Electronic Engineering</option>
+  				<option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+				</select></h2></td>
+			</tr>
+
+			<tr>
+				<td><h2 >Nationality:</td>
+				<td><input type="checkbox" id="Indian" name="check" value="Indian">Indian			
+				<input type="checkbox" id="nationality" name="others" value="other" onclick="other()">other   <br><span id="span111">
+				</span></h2></td><br>
+			</tr>
+
+			<tr>
+				<td><h2 >Your image: </td>
+				<td><input type="file" name="pic" id="pic"></td></h2><br>
+  				
+  			</tr>
+				
+			<tr>
+				<br><td><input type="button" style="background-color: green" value="Submit" onclick="location.reload();" class="button"></td>
+				<td><input type="reset" value="Reset" style="background-color: green" class="button"></td>
+			</tr>
+
+				</table>
+				</center>	
+			</form>
+			
+			
+			<div style="background-color: orange" class="marq">
+			<marquee ><b>Assignment by BATCH 5 [ THUSHAR , FATHIMA , SUNITHA , ZAFAR ]</b></marquee>
+		</div>
+		</div>
+		
+	</body>
+</html>

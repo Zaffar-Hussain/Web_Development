@@ -1,0 +1,146 @@
+
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<title> Oracle Login - Single Sign On
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="/mysso/sso_loginui/e_sso_style.css?v=2.0" type="text/css" media="print, screen">
+<script type="text/javascript" language="JavaScript" src="/mysso/sso_loginui/e_moc_lib.js?v=1.0"></script>
+<script type="text/javascript" language="JavaScript" src="/mysso/sso_loginui/e_sso_check.js?v=4.0"></script>
+<style> html{display : none ; } </style>
+<script>
+if (self == top)
+{
+document.documentElement.style.display = 'block';
+}
+else
+{
+top.location = self.location;
+}
+</script>
+<script>stripHTML();</script>
+</head>
+<body class="f17 f17v2" onLoad="doLoad();">
+<div class="f17w1">
+<div class="f17w2" style="display:none"><img src="/mysso/sso_loginui/sso-f17v2-bgimg.jpg"></div>
+<!-- U16v0 -->
+<div id="u16" class="u16 u16v0">
+<div class="u16w1">
+<a href=" https://www.oracle.com/index.html
+" tabindex="9">Oracle</a>
+</div>
+</div>
+<!-- /U16v0 -->
+<!-- CB41v0 -->
+<div class="cb41 cb41v0">
+<div class="cb41w1">
+<h2> Sign in
+</h2>
+<form method="post" action="/oam/server/sso/auth_cred_submit" name="LoginForm" autocomplete="off">
+<ul>
+<input type="hidden" name="v" value="v1.4">
+<input type="hidden" name="request_id" value="-2048961716844219530">
+<input type="hidden" name="OAM_REQ" value="VERSION_4~VYfd52PtpmwoParHvP4pOqJk1sI93QLzomlF6EdGk25%2f7Q4MYec4MJAk4SRbBNf6RNCRXAM0dv2z%2fJnQpMeykR4VAPL53dAmKh8Et2FmXTFGe%2fhn1RfmE8VO8CczGj83fD9miISdKs%2bRPgE%2b%2fknDc2UeTK%2fi3zJ3umtpFW4UcbssEFdMisTo2rHPti9WJ92cE6S9KKzdBb5G2daAt6Ib9F1T3DcDhuQkrDKqoNRSz%2fO2Dp0szL8Yw%2fMnjEEgfOvwED3Fmwrca2MJB1axfcdwt%2biYgoVfnmB4zn967utk8YC4nmdCEop1ASLVw8J%2bXDeRMkOvnIXPqveKkmmCecc0CO5m7r2mEUcmqY2OqyrhSOTS6akQzHf2%2bqjYNkyMY4TpnYhgZWhlsEGpMDj5AXOatbShHjSrkEQiPUhUyELVelqANy8wOZjIqExZGvD2AMvDLVP2%2f9D4CCQxZ9G7BIOz0920pTzP6XsR4QeTQ853uzt%2fVPNlhCa5eAkjgtQgXMeXREPrbdT1eRhniclCOnnX9R4dBzbwwz7EbIsHKDT5nYIP7BgVLjhe85CskeIQLVCHpnM4fx8KZsHgbjWCiW2X05QLeRtd%2bNR4nZvy%2fc8yyVAAm8MDJFZpCYFbXc7Vz%2bIA5GtMcjX9p7D5MJgibh8I6DG6%2f157sj4fZrJmmIFg%2fsiir%2fsJLnFp9HY9bgRtLubzoNKuTdAENoZbMzed3HjdWCofjlM0PksV5hR6ZSM051jFg%2bMQykaqqzEm%2f26dAC317Ur6NtKG4zZdCwY%2bU8GoExphJXxwyIGqcdxj%2bVfciqbdI0FCx%2b5I%2fO8PjFyZ4KiHJWANs5m%2bNOHrelG1eNzv4O%2b23Lei8yNLHZPMZkGnYlCNs8K5jJZ4YDMOdU0gpcg05%2bWCK6J0W%2bjv39waznKtI1sQiWYaNuVchIoE5twiDePJIK4%2fSCKtpdcOnx9mJyuiiSGVVNAKCoP5XCHPcmrw7ZZjDNxrg7K11iEU%2fx6SjB3LHnxX5xLsobfSqJ4f3TxIyc7VKn54mUdRjnoSz71JEgW5nLEhKaaXKgBRsmJU6px2dhQg10sKEcdchjCtqc2DKagokD73cc88kNbuGLamIoDlDHhalmqCLdtyQWZdwlicX6kt3W3VZJW%2fa4WJm7xkFYFloVJFEwnpkiPj9q0r7owaWw8Kc7FsHyaawbqL2HipNgTBxsfTSQuuDpiWNmMcX6M%2fY8JrWsCaJhhHtMpHPuJ2%2bROMnIY9YsqQOQhpKgHAcUa1dLdLaJmrco4AbSLVJRKhkb7SgowhTJALRPtFWpOapVQDZh%2ffHJ1sNl59X1%2ftMMEPS3gnWXdFWBP35OVATl2aMp7ktnXzRmcD65CsA1qZMnQHlaCgvrZUHXOV0kS1f7aob3L7LwXmbq1QNn5Tx811xoE0USi8JKnifdi%2fgcPR6axfhrf3%2bO5%2f1qWz2UlKiCVa%2b7JYGLvGqRSX3FpvUgdgqdLVN8pt4Ns685Gx0da8eIS5JwCvTFlhVxlqhzX4J0fUrgYMJF3uKgLrxX5jzJ2Z2BnDWnLQPbm1z%2f2rmb33qomOcISABKC3Z%2fkFSSMUrWv4aJEFhmeBKSlAx2xh4gYDXibCEYuJCOnd227hxGVhyGpb30mCjrVJz%2bod%2feA2RE54ozzdXd2p%2f9uq6j9TlC24w6uJrWVHje0%2b7ZU1zqfnQigkngl8Vzd6w6NQvE5Dg4MOXMIjAjo4jc0P5ZfLDKFiY1j4nu4gb1lE5NSRC8gWfUpnQ5vP5V8tXr3%2bx2KTGCgEjTRZKkjyGI5vfzJyYWFQ1kIuGH%2fuDdzHRuMNbC1yrZeMaVbWq7zyvc3tv0vGL6Uq%2fFKg7BQUgOsFyq%2f4VS07NNI%2f5DxZC82qP73iJ%2frLFOzU784%2biB5DSQlEeMqD0ReuK9rTj7gudJ4mXnhEkWSxwniLVJv7SJCJb%2bIXocetDTaKldLMaY7%2bm4GtwtRF%2bKC6zqLN7vTmiYcDrg%2f%2fz7iGGOEEURqnPgiL0tyFjaTUK4o7jHhw%2bnJHl0shnak%3d">
+<input type="hidden" name="site2pstoretoken" value="v1.2~EC062A1473FF0629A4~F670B376518790C9ED313E4605DD28C0E7E0978CB457BB687D8BFE1974E06D47014B15C1226F6F0EB91AF1E8AEBF2582B4C1BEAE2602A061ABDA69074CC7216243D986A1E9647F4F02F0DDBB833AABDE4EFB7E02C538A0B9EEA723EE4CE162A324D177E08380104194242110C5B2DD4A397BD28830D9C1CAC807AFC1AE7B285BFD23463FDDE316E23584DFA5B9CBCEB7B9B4D55B862282443159D866FF9FFA5B1F1D308093954D633665971817801761ECC453386EC946B9EF68CCEF46CF6906F540B9DAEE741DC3057B57286811D2B031B6AFF224BC21160CB73EDDF1C0414FB338354AC8AF3150ADBC78C7E0AD9AFE8956AD71BE99612B">
+<input type="hidden" name="locale" value="">
+<li>
+<div class="cb41w2">
+<label for="sso_username"> Username
+<span class="hideFromScreen">
+<span id="readerunameerrormsg" class="error-show"></span>
+<span id="readerunamerequired" class="error-hide"> ERROR:
+Please enter your username and password
+</span>
+</span>
+</label>
+<input type="text" id="sso_username" name="ssousername" title=" Please enter a username
+" maxlength="80" value="" tabindex="1"/>
+<span class="cb41w5">
+<span class="cb41w6">
+<span role="tooltip" class="cb41noteshoverbtn" tabindex="4" title=" Username help
+"><span class="cb41notescontent"> Username is usually your email address.
+<a href=" https://profile.oracle.com/myprofile/account/forgot-username.jspx
+" tabindex="5" target="_blank"> Forgot username?
+</a></span></span>
+</span>
+</span>
+</div>
+</li>
+<li>
+<div class="cb41w3">
+<label for="ssopassword"> Password
+<span class="hideFromScreen">
+<span id="readerpwderrormsg" class="error-show"></span>
+<span id="readerpwdrequired" class="error-hide"> ERROR:
+Please enter your username and password
+</span>
+</span>
+</label>
+<input type="password" id="ssopassword" name="password" title=" Please enter a password
+" value="" maxlength="255" tabindex="2"/>
+<span class="cb41w5">
+<span class="cb41w6">
+<span role="tooltip" class="cb41noteshoverbtn" tabindex="6" title=" Password help
+"><span class="cb41notescontent"><a href=" https://profile.oracle.com/myprofile/account/forgot-password.jspx
+" tabindex="7" target="_blank"> Forgot password?
+</a></span></span>
+</span>
+</span>
+</div>
+</li>
+</ul>
+<div class="cb41w7">
+<span id="required" class="error-hide">
+<div class="cb41error">
+Please enter your username and password
+</div>
+</span>
+</div>
+<div class="cb41w4">
+<span><input type="button" value=" Sign in
+" tabindex="3" title=" Please click here to sign in
+" onclick="doLogin(document.LoginForm);"/></span>
+</div>
+</form>
+</div>
+<div class="cb41w1">
+<h3> Don't have an Oracle Account?
+</h3>
+<div class="cb41w4">
+<span>
+<a href=" https://profile.oracle.com/myprofile/account/create-account.jspx?nexturl=https%3A%2F%2Flogin.oracle.com%2Foam%2Fserver%2Fosso_login%3FSite2pstoreToken%3Dv1.2%7EEC062A1473FF0629A4%7EF670B376518790C9ED313E4605DD28C0E7E0978CB457BB687D8BFE1974E06D47014B15C1226F6F0EB91AF1E8AEBF2582B4C1BEAE2602A061ABDA69074CC7216243D986A1E9647F4F02F0DDBB833AABDE4EFB7E02C538A0B9EEA723EE4CE162A324D177E08380104194242110C5B2DD4A397BD28830D9C1CAC807AFC1AE7B285BFD23463FDDE316E23584DFA5B9CBCEB7B9B4D55B862282443159D866FF9FFA5B1F1D308093954D633665971817801761ECC453386EC946B9EF68CCEF46CF6906F540B9DAEE741DC3057B57286811D2B031B6AFF224BC21160CB73EDDF1C0414FB338354AC8AF3150ADBC78C7E0AD9AFE8956AD71BE99612B
+" class="cb41create-btn" tabindex="8"> Create Account
+</a>
+</span>
+</div>
+<div class="cb41w8">
+<!-- U17v0 -->
+<div id="u17" class="u17 u17v0">
+<div class="u17w1 cwidth">
+<ul>
+<li>&copy; Oracle</li>
+<li><a href=" https://www.oracle.com/legal/terms.html
+" target="_blank"> Terms of Use
+</a></li>
+<li><a href=" https://www.oracle.com/legal/privacy/index.html
+" target="_blank"> Privacy Policy
+</a></li>
+</ul>
+</div>
+</div>
+<!-- /U17v0 -->
+</div>
+<!-- /CB41w8 -->
+</div>
+<!-- /CB41w1 -->
+</div>
+<!-- /CB41v0 -->
+<script type="text/javascript" src="/mysso/sso_loginui/jquery.js?v=1.0"></script>
+<script type="text/javascript" src="/mysso/sso_loginui/sso.js?v=2.0"></script>
+</div>
+</body>
+</html>

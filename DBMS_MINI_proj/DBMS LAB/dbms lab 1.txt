@@ -1,0 +1,149 @@
+
+
+set timing on;
+
+drop table book cascade constraints;
+
+drop table library_branch cascade constraints;
+
+drop table publisher cascade constraints;
+
+drop table book_authors cascade constraints;
+
+drop table book_copies cascade constraints;
+
+drop table book_lending cascade constraints;
+
+drop view v_books;
+
+--range partition
+
+show user
+
+create table book (Book_id char(15) primary key, Title char(15), Publisher_Name char(20), Pub_Year int)
+partition by range(pub_year)
+(partition p1 values less than (2014) tablespace users,
+partition p2 values less than (2016) tablespace sysaux,
+partition p3 values less than (maxvalue) tablespace system);
+
+desc dba_tab_partitions;
+
+
+select table_owner,table_name,partition_name from dba_tab_partitions
+ where table_name='BOOK';
+
+
+
+
+create table library_branch(Branch_id integer primary key , Branch_Name char(20) , Address char(30));
+
+create table publisher(Name char(20) primary key, Address char(30), Phone integer);
+
+create table book_authors(Author_Name char(15),Book_id char(15) primary key, foreign key (Book_id) 
+references BOOK(Book_id) on delete cascade);
+
+create table book_copies(No_of_Copies integer,Book_id char(15),Branch_id integer,foreign key 
+(Book_id) references book(Book_id) on delete cascade, 
+foreign key (Branch_id) references library_branch(Branch_id) on delete cascade,primary key(book_id,branch_id));
+
+create table book_lending(Card_No integer, Date_Out date, Due_Date date,Book_id char(15),Branch_id integer,
+foreign key (Book_id)  
+references book(Book_id)  on delete cascade, 
+foreign key (Branch_id)  references library_branch(Branch_id) on delete cascade,primary key(book_id,branch_id,card_no));
+
+insert into book(Book_id,Title,Publisher_Name,Pub_Year) values('DBMS-1','DBMS','Pearson',2017);
+insert into book(Book_id,Title,Publisher_Name,Pub_Year) values('Oracle-1','Oracle','Wilson',2015);
+insert into book(Book_id,Title,Publisher_Name,Pub_Year) values('OOPS-1','OOPS','HP Publisher',2014);
+insert into book(Book_id,Title,Publisher_Name,Pub_Year) values('Network-1','Network','Neo Infotech',2013);
+insert into book(Book_id,Title,Publisher_Name,Pub_Year) values('MySql-1','MySql','MK Publisher',2012);
+insert into book(Book_id,Title,Publisher_Name,Pub_Year) values('DBMS-2','DBMS','Pearson',2011);
+
+insert into library_branch(Branch_id,Branch_Name,Address) values(1,'PearsonLibrary','USA');
+insert into library_branch(Branch_id,Branch_Name,Address) values(2,'OracleLibrary','UK');
+insert into library_branch(Branch_id,Branch_Name,Address) values(3,'OOPSLibrary','BYU');
+insert into library_branch(Branch_id,Branch_Name,Address) values(4,'NetworkLibrary','Canada');
+insert into library_branch(Branch_id,Branch_Name,Address) values(5,'MySqlLibrary','India');
+
+insert into publisher(Name, Address, Phone) values('PearsonPublisher','USA',080124578);
+insert into publisher(Name, Address, Phone) values('OraclePublisher','UK',6545456465);
+insert into publisher(Name, Address, Phone) values('OOPSPublisher','BYU',454354354);
+insert into publisher(Name, Address, Phone) values('NetworkPublisher','Canada',567657657);
+insert into publisher(Name, Address, Phone) values('MySqlPublisher','India',1324454354);
+
+insert into book_authors(Author_Name,Book_id) values('Navathe','DBMS-1');
+insert into book_authors(Author_Name,Book_id) values('Raghu','Oracle-1');
+insert into book_authors(Author_Name,Book_id) values('Balu','OOPS-1');
+insert into book_authors(Author_Name,Book_id) values('Forouzan','Network-1');
+insert into book_authors(Author_Name,Book_id) values('Kanta','MySql-1');
+insert into book_authors(Author_Name,Book_id) values('Navathe','DBMS-2');
+
+insert into book_copies(No_of_Copies,Book_id ,Branch_id) values (5,'DBMS-1',1);
+insert into book_copies(No_of_Copies,Book_id ,Branch_id) values (8,'Oracle-1',2);
+insert into book_copies(No_of_Copies,Book_id ,Branch_id) values (15,'OOPS-1',3);
+insert into book_copies(No_of_Copies,Book_id ,Branch_id) values (3,'Network-1',4);
+insert into book_copies(No_of_Copies,Book_id ,Branch_id) values (12,'MySql-1',5);
+insert into book_copies(No_of_Copies,Book_id ,Branch_id) values (4,'DBMS-2',1);
+
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (8454,'06-AUG-17','06-AUG-17','Oracle-1',2);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (43523,'12-MAR-17','06-AUG-17','OOPS-1',3);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (454,'16-APR-17','06-AUG-17','Network-1',4);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (12,'23-MAY-17','06-AUG-17','MySql-1',5);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (545,'01-JAN-17','06-jun-17','DBMS-1',1);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (545,'09-JUN-17','09-jun-17','DBMS-2',1);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (545,'23-MAY-17','14-jun-17','MySql-1',5);
+insert into book_lending(Card_No, Date_Out, Due_Date,Book_id,Branch_id) values (545,'12-MAR-17','30-jun-17','OOPS-1',3);
+
+
+
+
+SELECT B.BOOK_ID, B.TITLE, B.PUBLISHER_NAME, A.AUTHOR_NAME, C.NO_OF_COPIES, L.BRANCH_ID
+FROM BOOK B, BOOK_AUTHORS A, BOOK_COPIES C, LIBRARY_BRANCH L
+WHERE B.BOOK_ID=A.BOOK_ID
+AND B.BOOK_ID=C.BOOK_ID
+AND L.BRANCH_ID=C.BRANCH_ID;
+
+
+SELECT card_no
+FROM BOOK_LENDING
+WHERE Due_Date BETWEEN '01-JAN-2017' AND '01-jul-2017'
+GROUP BY card_no
+HAVING COUNT (*)>3;
+
+CREATE VIEW V_BOOKS AS
+SELECT B.BOOK_ID, B.TITLE,b.publisher_name,b.pub_year, C.NO_OF_COPIES
+FROM BOOK B, BOOK_COPIES C, LIBRARY_BRANCH L
+WHERE B.BOOK_ID=C.BOOK_ID
+AND C.BRANCH_ID=L.BRANCH_ID;
+
+select * from V_BOOKS;
+
+select * from book;
+
+
+ select * from book_authors;
+
+select * from book_copies;
+
+select * from book_lending;
+
+DELETE FROM BOOK
+WHERE BOOK_ID='Oracle-1';
+
+
+select * from book;
+
+
+ select * from book_authors;
+
+select * from book_copies;
+
+select * from book_lending;
+
+
+
+select constraints_name,constraint_type from user_constraints where table_name='BOOK';
+
+ alter table book drop partition p2;
+
+set timing off;
+

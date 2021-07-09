@@ -1,0 +1,57 @@
+drop table salesman cascade constraints;
+drop table customer cascade constraints;
+drop table orders cascade constraints;
+drop view Viewsalesman;
+
+create table salesman
+(salesman_id int,
+name varchar2(20),
+city varchar2(20),
+commission varchar2(20),
+primary key(salesman_id));
+
+create table customer
+(customer_id int,
+cust_name varchar2(20),
+city varchar2(20),
+grade number(3),
+primary key(customer_id),
+salesman_id references salesman(salesman_id) on delete set NULL);
+
+create table orders
+(ord_no int,
+purchase_amt float,
+ord_date DATE,
+primary key(ord_no),
+customer_id references customer(customer_id) on delete cascade,
+salesman_id references salesman(salesman_id) on delete cascade);
+
+select grade,count(distinct customer_id) from customer group by grade
+having grade >(select AVG(grade) from customer 
+where city = 'Bangalore');
+
+select salesman_id,name from salesman A
+where 1<(select count(*) from customer
+where salesman_id = A.salesman_id);
+
+select salesman.salesman_id,salesman.city,name,cust_name,commission
+from salesman,customer
+where salesman.city = customer.city
+union
+select salesman_id,city,name,'no value',commission
+from salesman
+where not city = any(select city from customer);
+
+create view Viewsalesman as
+select B.ord_date,A.salesman_id,A.name,B.purchase_amt
+from salesman A, orders B
+where A.salesman_id = B.salesman_id
+and B.purchase_amt = (select MAX(purchase_amt)
+from orders c
+where c.ord_date = B.ord_date);
+
+select * from Viewsalesman;
+
+
+delete from salesman
+where salesman_id = 1000;

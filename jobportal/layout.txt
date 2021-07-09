@@ -1,0 +1,36 @@
+
+
+<html>
+   <head>
+      <title>HTML Layouts using div and span </title>
+   </head>
+   <body>
+      <div style = "width:80%">  
+         <div style = "background-color:lightgrey; width:100%">
+            <h1>PROCESS LAYOUT EXAMPLE</h1>
+         </div>      
+         <div style = "background-color:PaleGoldenRod; height:200px; width:100px; float:left;">
+            <div><b>Main Menu</b></div>
+             link one<br>
+          
+               Link two<br />
+               Link three<br />
+               Link four
+         </div>      
+         <div style = "background-color:#eee; height:200px; width:750px; float:left;" >
+            <p>This is an example layout using the div and span</p>
+         </div>   
+         <div style = "background-color:PaleGoldenRod; height:200px; width:205px; float:right;">
+            <div><b>Right Menu</b></div>
+            ADS<br />
+            INFO<br />
+            NEWS
+         </div>   
+         <div style = "background-color:lightgrey; clear:both">
+            <center>
+               www.Example of layout using div and span.com
+            </center>
+         </div>      
+      </div>
+   </body>
+</html>
